@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="box">
+            <h1 class="box1">Unit Converter</h1>
+            <br/>
+            <div class="converter">
+                <input type="number" id="inputValue">
+                <select id="inputUnit">
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                    <option value="m">m</option>
+                    <option value="f">foot</option>
+                     <option value="km">km</option>
+                </select>
+            </div>
+        
+            <div class="converter">
+                <input type="number" id="outputValue" readonly>
+                <select id="outputUnit">
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                    <option value="m">m</option>
+                    <option value="f">foot</option>
+                     <option value="km">km</option>
+                </select>
+            </div>
+
+            <button   class="btn" onclick="convert()" >Convert</button>
+            <div class="result" id="result"></div>
+            <script>
+                function convert() {
+                    var inputValue = document.getElementById("inputValue").value;
+                    var inputUnit = document.getElementById("inputUnit").value;
+                    var outputUnit = document.getElementById("outputUnit").value;
+        
+                    var outputValue;
+        
+                    if (inputUnit === "cm") {
+                        if (outputUnit === "inch") {
+                            outputValue = inputValue * 0.393701;
+                        } else if (outputUnit === "m") {
+                            outputValue = inputValue * 0.01;
+                        }
+                        else if (outputUnit === "f") {
+                            outputValue = inputValue / 30.48; 
+                        }
+                         else if (outputUnit === "km") {
+                            outputValue = inputValue / 100000; 
+                        }
+                        else {
+                            outputValue = inputValue;
+                        }
+                    } else if (inputUnit === "inch") {
+                        if (outputUnit === "cm") {
+                            outputValue = inputValue * 2.54;
+                        } else if (outputUnit === "m") {
+                            outputValue = inputValue * 0.0254;
+                        } 
+                         else if (outputUnit === "f") {
+                            outputValue = inputValue / 12;
+                            }
+                         else if (outputUnit === "cm") {
+                            outputValue = inputValue /39370;  
+                        }else {
+                            outputValue = inputValue;
+                        }
+                    } else if (inputUnit === "m") {
+                        if (outputUnit === "cm") {
+                            outputValue = inputValue * 100;
+                        } else if (outputUnit === "inch") {
+                            outputValue = inputValue * 39.3701;
+                        }
+                        else if (outputUnit === "f") {
+                            outputValue = inputValue / 12; 
+                        } 
+                         else if (outputUnit === "km") {
+                            outputValue = inputValue / 1000; 
+                        }else {
+                            outputValue = inputValue;
+                        }
+                    }
+                     else if (inputUnit === "f") {
+                        if (outputUnit === "inch") {
+                            outputValue = inputValue * 12;
+                        } else if (outputUnit === "m") {
+                            outputValue = inputValue /3.281;
+                        }
+                        else if (outputUnit === "cm") {
+                            outputValue = inputValue * 30.48; 
+                        }
+                         else if (outputUnit === "km") {
+                            outputValue = inputValue /3281; 
+                        }
+                        else {
+                            outputValue = inputValue;
+                        }
+                    }
+                    else if (inputUnit === "km") {
+                        if (outputUnit === "inch") {
+                            outputValue = inputValue * 39370;
+                        } else if (outputUnit === "m") {
+                            outputValue = inputValue *1000;
+                        }
+                        else if (outputUnit === "cm") {
+                            outputValue = inputValue * 100000; 
+                        }
+                         else if (outputUnit === "f") {
+                            outputValue = inputValue *3281; 
+                        }
+                        else {
+                            outputValue = inputValue;
+                        }
+                    }
+        
+                    document.getElementById("outputValue").value = outputValue;
+                    document.getElementById("result").innerText = inputValue + " " + inputUnit + " is equal to " + outputValue + " " + outputUnit;
+                }
+            </script>
+    </div>
+</body>
+</html>
